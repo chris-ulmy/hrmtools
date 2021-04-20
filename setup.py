@@ -16,7 +16,7 @@ setuptools.setup(
                       "matplotlib",
                       "numpy"],
     url="https://github.com/chris-ulmy/hrmtools.git",
-    packages=setuptools.find_namespace_packages(),
+    packages=["hrmtools"],
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
