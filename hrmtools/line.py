@@ -1,6 +1,7 @@
 from .graph import Graph
 from .ann import Annotations
 from matplotlib import pyplot as plt
+import numpy as np
 
 
 class Line(Graph):
@@ -52,7 +53,10 @@ class Line(Graph):
         # Loop through the sensors and plot the data
         for idx, sensor in enumerate(sensors):
             # Retieve the axes to graph the data on
-            axes = self.axes[idx]
+            if type(self.axes) == np.ndarray:
+                axes = self.axes[idx]
+            else:
+                axes = self.axes
 
             # Retrieve a single column of the sensor data
             data = p.Z[sensor]

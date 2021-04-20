@@ -15,15 +15,15 @@ class Data():
         """
 
         if getattr(self.pressures, "empty", None):
+            shape_p = None
+        else:
             # Retrieve the shape of the dataframe
             shape_p = self.pressures.shape
-        else:
-            shape_p = None
         if getattr(self.annotations, "empty", None):
+            shape_a = None
+        else:
             # Retrieve number of rows
             shape_a = self.annotations.shape[0]
-        else:
-            shape_a = None
 
         # Build the expression to return
         expression = (f"Data(pressures=pandas.dataframe of shape {shape_p}, "
