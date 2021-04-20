@@ -74,10 +74,7 @@ class Line(Graph):
 
         # Convert xtick labels based on time_in_mins property. Only pass the
         # last axes which will be labeled accordingly.
-        if type(self.axes) == np.ndarray:
-            self._conv_times(axes[num_sensors-1], "line")
-        else:
-            self._conv_times(axes, "line")
+        self._conv_times(axes, "line")
 
         # Create a blank subplot that surrounds the axes. Used to get the common
         # y-lable to show properly.
