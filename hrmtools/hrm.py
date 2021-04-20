@@ -1,7 +1,7 @@
-from cutools.HRM.plot import Plot
-from cutools.HRM.cimp import Import
-from cutools.HRM.data import Data
-from cutools.HRM import ctime
+from plot import Plot
+from cimp import Import
+from data import Data
+from HRM import ctime
 
 
 class HRM():
