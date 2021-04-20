@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from matplotlib import pyplot as plt
-import ctime
+from . import ctime
 
 
 class Graph(ABC):

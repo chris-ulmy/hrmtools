@@ -1,7 +1,7 @@
-from plot import Plot
-from cimp import Import
-from data import Data
-from HRM import ctime
+from .plot import Plot
+from .cimp import Import
+from .data import Data
+from . import ctime
 
 
 class HRM():

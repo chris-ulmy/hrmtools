@@ -1,5 +1,5 @@
-from graph import Graph
-from ann import Annotations
+from .graph import Graph
+from .ann import Annotations
 from matplotlib import pyplot as plt
 from matplotlib.colors import ListedColormap
 import numpy as np

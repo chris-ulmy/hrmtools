@@ -1,5 +1,5 @@
-from line import Line
-from spatio import Spatio
+from .line import Line
+from .spatio import Spatio
 
 
 class Plot():
