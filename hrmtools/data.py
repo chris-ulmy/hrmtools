@@ -14,16 +14,16 @@ class Data():
             dataframe and the number of annotations stored.
         """
 
-        if getattr(self.pressures, "empty", None):
-            shape_p = None
-        else:
+        if not getattr(self.pressures, "empty", True):
             # Retrieve the shape of the dataframe
             shape_p = self.pressures.shape
-        if getattr(self.annotations, "empty", None):
-            shape_a = None
         else:
+            shape_p = None
+        if not getattr(self.annotations, "empty", True):
             # Retrieve number of rows
             shape_a = self.annotations.shape[0]
+        else:
+            shape_a = None
 
         # Build the expression to return
         expression = (f"Data(pressures=pandas.dataframe of shape {shape_p}, "

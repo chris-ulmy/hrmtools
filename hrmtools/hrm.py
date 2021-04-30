@@ -27,18 +27,21 @@ class HRM():
             Arguments: 
             ----------
             time_seg {iter float | iter string} -- Must be paired given as
-            either float or string.
+            either float or string. Can be in the format of (78.3, 82.1) or as
+            ("1:18.3", "1:22.1")
 
-            sensors {iter int} -- The sensors which to graph. Zero indexed.
+            sensors {iter int} -- The sensors which to graph.
 
             Returns:
             --------
             Z {pandas data frame} -- Segment of df_HRM pressure data. Includes
-            Time column as first column of data frame. Of shape [time,
-            num_sensors]. Index of table is the time in SS.SS.
+            Time column as first column of data frame. Of shape (time,
+            num_sensors). Index of table is the time in SS.SS.
 
             ann {pandas data frame} -- The annotation text and time that are
-            within the time range of the segment.
+            within the time range of the segment. Of shape (time, 1). Index of
+            table ins the time column and the annotation text is the only
+            column.
          """
 
         # Check if any data has been loaded. If self.data.pressures is None,
@@ -48,9 +51,6 @@ class HRM():
 
         # Create a copy as a list from the input time_seg and sensors.
         time_seg = list(time_seg)
-        sensors = list(sensors)
-
-        # Create a copy of the sensorss input. Ensure its a list of integers.
         sensors = [int(i) for i in sensors]
 
         # Check to see if time_seg is a tuple or list, ensure it is length of 2

@@ -54,7 +54,7 @@ class Spatio(Graph):
                       (0.517543852329254, 0.0, 0.0), (0.5, 0.0, 0))
         self.colormap = ListedColormap(self._cmap)
 
-    def create(self, time_seg, sensors=range(1, 37), title="HRM Plot"):
+    def create(self, time_seg, sensors=range(1, 37), title="HRM Plot", show=True):
         """
             Creates a spatio temporal plot of sensor data. Stores references to
             the figure and axes in corresponding class property.
@@ -69,6 +69,11 @@ class Spatio(Graph):
             sensor will be graphed in its own subplot. 
 
             title {string} -- Title of the plot.
+
+            show {bool} -- Optional. Determines whether the pyplot.show()
+            command is called. If true the plot will be drawn, if false the plot
+            will be created and can later be manipulated by accessing the figure
+            properties.
 
             Returns:
             --------
@@ -112,12 +117,18 @@ class Spatio(Graph):
 
         # Set the y-axis title
         plt.ylabel("Sensor Number", fontsize=p.fontsize)
+        
+        # Set the y-axis labels. The first tick must start at 0 but is labeled
+        # with the first sensor number.
+        yticks = range(0, len(sensors))
+        plt.yticks(ticks=yticks, labels=sensors)
 
         # Set the overall figure title
         self.figure.suptitle(title, fontsize=p.fontsize+2)
 
-        # Show the figure
-        plt.show()
+        # If the show argument is true then show the figure
+        if show:
+            plt.show()
 
     def redraw(self):
         pass

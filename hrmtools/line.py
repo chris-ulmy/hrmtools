@@ -14,7 +14,7 @@ class Line(Graph):
         self.hrm = hrm
         self.annotations = Annotations(hrm)
 
-    def create(self, time_seg, sensors=range(1, 37), title="HRM Plot"):
+    def create(self, time_seg, sensors=range(1, 37), title="HRM Plot", show=True):
         """
             Creates a line plot of sensor data. Creates one axes for each sensor
             provided in sensors argument. Stores references to the figure and
@@ -30,6 +30,11 @@ class Line(Graph):
             sensor will be graphed in its own subplot. 
 
             title {string} -- Title of the plot.
+
+            show {bool} -- Optional. Determines whether the pyplot.show()
+            command is called. If true the plot will be drawn, if false the plot
+            will be created and can later be manipulated by accessing the figure
+            properties.
 
             Returns:
             --------
@@ -90,10 +95,11 @@ class Line(Graph):
         # Set the overall figure title
         self.figure.suptitle(title, fontsize=p.fontsize+2)
 
-        # Show the figure
-        plt.show()
+        # If the show argument is true then show the figure
+        if show:
+            plt.show()
 
-    def create_overlay(self, time_seg, sensors=range(1, 37), title="HRM Plot"):
+    def create_overlay(self, time_seg, sensors=range(1, 37), title="HRM Plot", show=True):
         """
             Creates a single axes with all sensors graphed over each other.
 
@@ -106,7 +112,12 @@ class Line(Graph):
             of integers corresponding to sensor number to be graphed. Each
             sensor will be graphed on the same axes. 
 
-            title {string} -- Title of the plot.
+            title {string} -- Optional. Title of the plot.
+
+            show {bool} -- Optional. Determines whether the pyplot.show()
+            command is called. If true the plot will be drawn, if false the plot
+            will be created and can later be manipulated by accessing the figure
+            properties.
 
             Returns:
             --------
@@ -149,8 +160,9 @@ class Line(Graph):
         # Turn on the legend
         self.axes.legend(legend, fontsize=p.fontsize)
 
-        # Show the figure
-        plt.show()
+        # If the show argument is true then show the figure
+        if show:
+            plt.show()
 
     def redraw(self):
         pass

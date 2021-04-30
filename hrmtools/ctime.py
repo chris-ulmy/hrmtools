@@ -15,7 +15,8 @@ def time_in_sec(input_time):
 
     # Check if input_time was a string or a list of strings
     if isinstance(input_time, str):
-        seconds = _convert_to_sec(input_time)
+        for t in input_time:
+            seconds.append(sum(float(x) * 60 ** i for i, x in enumerate(reversed(t.split(':')))))
     elif isinstance(input_time, (list, tuple)):
         # Loop through the list or tuple.
         for time in input_time:
