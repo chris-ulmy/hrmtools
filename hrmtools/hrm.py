@@ -101,7 +101,40 @@ class HRM():
 
         return time_seg
 
+    def save_to_text(self, save_path):
+        """
+            Saves the data currently stored in class properties df_HRM and
+            df_ann to a text file. 
 
+            Arguments:
+                save_path {string} -- location of the new text file including
+                name
+
+            Returns:
+                success {bool} -- whether or not the save operation completed
+                successfully
+        """
+        success = False
+        self.df_HRM.to_csv(save_path,
+                           header=True,
+                           index=False,
+                           sep="\t",
+                           mode="w")
+
+        with open(save_path, "a") as file:
+            file.write("Annotations:\n")
+
+        sort = self.df_ann.sort_values(["TIME"])
+        sort.to_csv(save_path,
+                    header=False,
+                    index=False,
+                    sep="\t",
+                    mode="a")
+        success = True
+
+        return success
+
+        
 if __name__ == "__main__":
     h = HRM()
     h.import_data.from_text(
