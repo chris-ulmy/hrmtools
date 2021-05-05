@@ -115,7 +115,7 @@ class HRM():
                 successfully
         """
         success = False
-        self.df_HRM.to_csv(save_path,
+        self.data.pressures.to_csv(save_path,
                            header=True,
                            index=False,
                            sep="\t",
@@ -124,7 +124,7 @@ class HRM():
         with open(save_path, "a") as file:
             file.write("Annotations:\n")
 
-        sort = self.df_ann.sort_values(["TIME"])
+        sort = self.data.annotations.sort_values(["TIME"])
         sort.to_csv(save_path,
                     header=False,
                     index=False,
