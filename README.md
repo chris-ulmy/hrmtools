@@ -145,9 +145,16 @@ H.plot.spatio.create(time_seg=(260.6, 264.1), title="Our First Spatio Plot", sho
 <img src="./images/OurFirstSpatioPlot.jpg"> 
 </p> <br>
 
-That's it! You now know how to work with the `hrmtools` object. 
+### Exporting back to a text file
+If you edit the dataframes containing the pressure data or the annotations, you can re-export them to a text file for later use. Provide a path to the location you want to save the text file to the `save_to_text()` function as shown below.
+```python
+H.save_to_text("C:/users/ulmschneider/Desktop/New_data.txt")
+```
+
+That's it! You now know how to work with the `hrmtools` object. Enjoy! 
 
 ## To do
 This is a list of the items that need to be added to the project still.
-1. Functionality for plotting annotation lines on the line plot and spatio plots. Some of these functions are already in the code base but they may not work as expected.
-2. Functionality to import 3D HRM data. This involves 128 extra columns of data and would require a new plotting method. 
+1. Functionality for performing multiple calculations on a data segment and displaying them for the user.
+2. Functionality for plotting annotation lines on the line plot and spatio plots. Some of these functions are already in the code base but they may not work as expected.
+3. Functionality to import 3D HRM data. This involves 128 extra columns of data and would require a new plotting method. 

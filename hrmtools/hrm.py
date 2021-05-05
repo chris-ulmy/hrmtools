@@ -127,7 +127,7 @@ class HRM():
         self.data.annotations.sort_index()
         self.data.annotations.to_csv(save_path,
                     header=False,
-                    index=False,
+                    index=True,
                     sep="\t",
                     mode="a")
         success = True
@@ -138,5 +138,5 @@ class HRM():
 if __name__ == "__main__":
     h = HRM()
     h.import_data.from_text(
-        r"D:\McCulloch Lab\Sleep Manometry Study\Subject 196, All Done.txt")
-    h.plot.spatio.create((73, 75.4), title="Spatio Plot")
+        r"C:/users/ulmschneider/Desktop/HRM_data.txt")
+    h.save_to_text("C:/users/ulmschneider/Desktop/New.txt")
