@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="hrmtools",
-    version="0.0.1",
+    version="0.0.2",
     author="Christopher Ulmschneider",
     author_email="ulmschneider.chris@gmail.com",
     description="hrmtools for plotting and data handling",

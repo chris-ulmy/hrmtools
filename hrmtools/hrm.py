@@ -101,9 +101,42 @@ class HRM():
 
         return time_seg
 
+    def save_to_text(self, save_path):
+        """
+            Saves the data currently stored in class properties df_HRM and
+            df_ann to a text file. 
 
+            Arguments:
+                save_path {string} -- location of the new text file including
+                name
+
+            Returns:
+                success {bool} -- whether or not the save operation completed
+                successfully
+        """
+        success = False
+        self.data.pressures.to_csv(save_path,
+                           header=True,
+                           index=False,
+                           sep="\t",
+                           mode="w")
+
+        with open(save_path, "a") as file:
+            file.write("Annotations:\n")
+
+        self.data.annotations.sort_index()
+        self.data.annotations.to_csv(save_path,
+                    header=False,
+                    index=True,
+                    sep="\t",
+                    mode="a")
+        success = True
+
+        return success
+
+        
 if __name__ == "__main__":
     h = HRM()
     h.import_data.from_text(
-        r"D:\McCulloch Lab\Sleep Manometry Study\Subject 196, All Done.txt")
-    h.plot.spatio.create((73, 75.4), title="Spatio Plot")
+        r"C:/users/ulmschneider/Desktop/HRM_data.txt")
+    h.save_to_text("C:/users/ulmschneider/Desktop/New.txt")
