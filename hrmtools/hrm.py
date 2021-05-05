@@ -124,8 +124,8 @@ class HRM():
         with open(save_path, "a") as file:
             file.write("Annotations:\n")
 
-        sort = self.data.annotations.sort_values(["TIME"])
-        sort.to_csv(save_path,
+        self.data.annotations.sort_index()
+        self.data.annotations.to_csv(save_path,
                     header=False,
                     index=False,
                     sep="\t",
